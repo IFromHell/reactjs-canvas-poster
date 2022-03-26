@@ -39,7 +39,7 @@ yarn add remax-canvas-poster
 
 | 属性名 | 说明 | 默认值 |
 | :--- | :--- | :--- |
-| saveType | 保存类型（toDataURL / tempFilePath） | tempFilePath） |
+| saveType | 保存类型（toDataURL / tempFilePath） | tempFilePath |
 | painting | 绘画数据，详细参数见 painting 参数说明 | [] |
 | onSuccess | 成功回调方法 |  |
 | onFail | 失败回调方法 | |
@@ -97,7 +97,7 @@ yarn add remax-canvas-poster
 | color | 文本颜色 | String | black |
 | textAlign | 文本对齐方式 | String | left。字体居中需要设置 left 值。比如：图片宽度 100,left:50,textAlign:'center' 即可居中 |
 | breakWord | 是否换行 | Boolean | false |
-| maxLineNumber | 最大行数 | Number | 2。根据width(宽度)换行 ,需要设置 breakWord: true ,超出行隐藏显示为... |
+| maxLineNumber | 最大行数 | Number | 默认：2。根据width(宽度)换行 ,需要设置 breakWord: true ,超出行隐藏显示为... |
 | bolder | 是否加粗 | Boolean | false |
 | textDecoration | 下划线装饰 | String | 下划线装饰 underline(下划线)、line-through(贯穿线) |
 
@@ -134,6 +134,9 @@ yarn add remax-canvas-poster
 ## 线上demo
 
 ## 注意事项
+
+1. 此项目只支持remaxjs开发微信小程序平台项目。
+
 
 ## FAQ
 
