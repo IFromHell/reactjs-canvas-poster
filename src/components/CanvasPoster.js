@@ -11,7 +11,6 @@ import { View, Canvas, createSelectorQuery, canvasToTempFilePath } from 'remax/w
 import QR from './util/qrcode';
 
 /**
- * @param {Object} visible  是否显示
  * @param {String} saveType  保存类型， toDataURL / tempFilePath(默认)
  * @param {Function} onSuccess  成功回调
  * @param {Function} onFail  失败回调
@@ -188,14 +187,14 @@ export default ({
      *   @param {String} textAlign  文本对齐方式  默认：left。字体居中需要设置 left 值。比如：图片宽度 100,left:50,textAlign:'center' 即可居中
      *   @param {String} lineHeight  行高（多行时起作用）  默认：20
      *   @param {Boolean} breakWord  换行  默认：false
-     *   @param {Number} MaxLineNumber 最大行数，默认：2. 根据width(宽度)换行 ,需要设置 breakWord: true ,超出行隐藏显示为...
+     *   @param {Number} maxLineNumber 最大行数，默认：2. 根据width(宽度)换行 ,需要设置 breakWord: true ,超出行隐藏显示为...
      *   @param {Boolean} bolder  加粗  默认：false
      *   @param {String} textDecoration  下划线装饰 underline(下划线)、line-through(贯穿线)
      */
     const drawText = (params) => {
         ctx.save();
         const {
-            MaxLineNumber = 2,
+            maxLineNumber = 2,
             breakWord = false,
             color = 'black',
             content = '',
@@ -229,7 +228,7 @@ export default ({
             for (let i = 0; i < content.length; i++) {
                 fillText += [content[i]];
                 if (ctx.measureText(fillText).width > width) {
-                    if (lineNum === MaxLineNumber) {
+                    if (lineNum === maxLineNumber) {
                         if (i !== content.length) {
                             fillText = fillText.substring(0, fillText.length - 1) + '...';
                             ctx.fillText(fillText, left, fillTop);

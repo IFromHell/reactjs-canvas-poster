@@ -5,4 +5,4 @@
  * @Description: 
  */
 import CanvasPoster from './components/CanvasPoster';
-export { CanvasPoster };
+export default CanvasPoster;
