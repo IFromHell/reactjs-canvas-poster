@@ -1,8 +1,8 @@
 {
     "name": "remax-canvas-poster",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "基于remaxJs开发微信小程序平台，使用canvas生成海报组件",
-    "main": "index.js",
+    "main": "lib/index.js",
     "scripts": {
         "build": "babel src --out-dir lib"
     },

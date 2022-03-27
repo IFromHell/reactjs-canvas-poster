@@ -5,7 +5,7 @@
  * @Date: 2022-03-21 09:58:11
  * @Description: canvas生成分享海报
  */
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { View, Canvas, createSelectorQuery, canvasToTempFilePath } from 'remax/wechat';
 
 import QR from './util/qrcode';
@@ -27,7 +27,7 @@ export default ({
     // 开始绘制
     const handlePaint = () => {
         const { width, height, views } = painting;
-
+        console.log(123)
         const inter = setInterval(() => {
             const query = createSelectorQuery();
             query.select('#shareimg').node(res => {
