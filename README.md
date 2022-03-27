@@ -113,7 +113,7 @@ export default () => {
         <div>
             <button onClick={() => generateShareImg()}>生成海报</button>
 
-            {startDraw && <RemaxCanvasPoster painting={painting} onSuccess={(imgBase64) => setImgUrl(imgBase64)} />}
+            {startDraw && <RemaxCanvasPoster painting={painting} onSuccess={(img) => setImgUrl(img)} />}
             <div style={{ textAlign: 'center', marginTop: 20 }}>
                 {imgurl && <img src={imgurl} style={{ width: painting?.width, height: painting?.height }} />}
             </div>
