@@ -27,7 +27,6 @@ export default ({
     // 开始绘制
     const handlePaint = () => {
         const { width, height, views } = painting;
-        console.log(123)
         const inter = setInterval(() => {
             const query = createSelectorQuery();
             query.select('#shareimg').node(res => {
