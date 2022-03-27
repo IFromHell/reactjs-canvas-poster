@@ -1,6 +1,6 @@
 {
-    "name": "remax-canvas-poster",
-    "version": "1.0.1",
+    "name": "reactjs-canvas-poster",
+    "version": "1.0.0",
     "description": "基于remaxJs开发微信小程序平台，使用canvas生成海报组件",
     "main": "lib/index.js",
     "scripts": {
@@ -19,12 +19,12 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/IFromHell/remax-canvas-poster.git"
+        "url": "git+https://github.com/IFromHell/reactjs-canvas-poster.git"
     },
     "author": "foxfly",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/IFromHell/remax-canvas-poster/issues"
+        "url": "https://github.com/IFromHell/reactjs-canvas-poster/issues"
     },
-    "homepage": "https://github.com/IFromHell/remax-canvas-poster#readme"
+    "homepage": "https://github.com/IFromHell/reactjs-canvas-poster"
 }

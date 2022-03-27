@@ -1,6 +1,6 @@
-# remax-canvas-poster
+# reactjs-canvas-poster
 
-此组件适用于remaxJs 微信小程序平台，使用canvas API生成海报。
+此组件适用于reactjs平台，使用canvas API生成海报。
 
 ## 主要特性
 
@@ -10,7 +10,7 @@
 - 绘制二维码；
 - 绘制渐变矩形；
 
-## 使用 remax-canvas-poster 的理由
+## 使用 reactjs-canvas-poster 的理由
 
 1. **简单：** 使用类`css`属性的方式生成`canvas`图；
 2. **易用：** 通过`npm`或者`yarn`安装，简单上手；
@@ -20,11 +20,11 @@
 ## 安装
 
 ```shell
-npm install remax-canvas-poster --save
+npm install reactjs-canvas-poster --save
 
 or
 
-yarn add remax-canvas-poster
+yarn add reactjs-canvas-poster
 ```
 
 ## 使用
@@ -32,7 +32,7 @@ yarn add remax-canvas-poster
 ```react
 import React, { useState } from 'react';
 
-import RemaxCanvasPoster from 'remax-canvas-poster';
+import CanvasPoster from 'reactjs-canvas-poster';
 
 export default () => {
     const [imgurl, setImgUrl] = useState('');
@@ -57,7 +57,7 @@ export default () => {
                     type: 'text',
                     top: 30,
                     left: 15,
-                    content: 'hellow remax-canvas-poster',
+                    content: 'hellow reactjs-canvas-poster',
                     fontSize: 18,
                     lineHeight: 25,
                     width: 250,
@@ -113,7 +113,7 @@ export default () => {
         <div>
             <button onClick={() => generateShareImg()}>生成海报</button>
 
-            {startDraw && <RemaxCanvasPoster painting={painting} onSuccess={(img) => setImgUrl(img)} />}
+            {startDraw && <CanvasPoster painting={painting} onSuccess={(img) => setImgUrl(img)} />}
             <div style={{ textAlign: 'center', marginTop: 20 }}>
                 {imgurl && <img src={imgurl} style={{ width: painting?.width, height: painting?.height }} />}
             </div>
@@ -124,7 +124,7 @@ export default () => {
 
 ## API
 
-### remax-canvas-poster组件属性
+### react-canvas-poster组件属性
 
 | 属性名 | 说明 | 默认值 |
 | :--- | :--- | :--- |
@@ -220,15 +220,17 @@ export default () => {
 
 ## 预览
 
+![预览图](https://app.yinxiang.com/files/common-services/binary-datas/c2VydmljZVR5cGU9MiZzZXJ2aWNlRGF0YT17Im5vdGVHdWlkIjoiMTIyYWU1NjgtM2E4Zi00NGFiLWJhMzgtOTMyNGE1ZTliMWMyIiwicmVzb3VyY0d1aWQiOiJhNDBmYWU2Mi1jMzMzLTQ2MzMtYTY1Zi1hMDRiYTE2MWYzZTcifQ==)
+
 ## 线上demo
 
 ## 注意事项
 
-1. 此项目只支持remaxjs开发微信小程序平台项目。
+1. 此项目只支持reactjs平台项目。
 
 
 ## FAQ
 
 ## 贡献代码
 
-使用过程中发现任何问题都可以提[Issue](https://github.com/IFromHell/remax-canvas-poster/issues) 给我，也非常欢迎 PR 或 [Pull Request](https://github.com/IFromHell/remax-canvas-poster/pulls)
+使用过程中发现任何问题都可以提[Issue](https://github.com/IFromHell/reactjs-canvas-poster/issues) 给我，也非常欢迎 PR 或 [Pull Request](https://github.com/IFromHell/reactjs-canvas-poster/pulls)
