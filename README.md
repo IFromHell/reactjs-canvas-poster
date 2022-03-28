@@ -29,7 +29,7 @@ yarn add reactjs-canvas-poster
 
 ## 使用
 
-```react
+```JavaScript
 import React, { useState } from 'react';
 
 import CanvasPoster from 'reactjs-canvas-poster';
