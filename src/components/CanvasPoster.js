@@ -51,7 +51,7 @@ export default ({
     const loadAllImages = (views) => {
         const imageList = [];
         views.forEach((item, i) => {
-            if (item.type === 'image') {
+            if (item && item.type === 'image') {
                 imageList.push(loadImage(item.url));
             }
         });
@@ -67,25 +67,24 @@ export default ({
         const { width, height, views } = painting;
         let imageIndex = 0;
         views.forEach((item, i) => {
-            if (item.type === 'rect') {
+            if (item && item.type === 'rect') {
                 drawRect(item);
-            } else if (item.type === 'image') {
+            } else if (item && item.type === 'image') {
                 drawImage({
                     ...item,
                     img: imageList[imageIndex]
                 });
                 imageIndex++;
-            } else if (item.type === 'text') {
+            } else if (item && item.type === 'text') {
                 drawText(item);
-            } else if (item.type === 'qrcode') {
-                drawQRCode(item);
-            } else if (item.type === 'gradient') {
+            } else if (item && item.type === 'gradient') {
                 drawGradient(item);
+            } else if (item && item.type === 'qrcode') {
+                drawQRCode(item);
             }
         });
 
         setTimeout(() => {
-
             if (saveType === 'toDataURL') {
                 const imageBase64 = canvas.toDataURL("image/png");
                 if (imageBase64) {
@@ -324,7 +323,7 @@ export default ({
     const loadImage = (url) => {
         return new Promise((resolve, reject) => {
             const image = canvas.createImage();
-            image.setAttribute('crossorigin', 'anonymous');
+            if (image.setAttribute) image.setAttribute('crossorigin', 'anonymous');
             image.onload = () => resolve(image);
             image.onerror = (err) => reject(err);
             image.src = url;
