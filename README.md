@@ -156,7 +156,7 @@ export default () => {
 | top | y轴坐标 | Number | 0 |
 | width | 宽度 | Number | 0 |
 | height | 高度 | Number | 0 |
-| radius | 圆弧半径 | Number, Array | 0 or [0, 0, 0, 0] |
+| radius | 圆弧半径 | Number, Array | 0 / [0, 0, 0, 0] |
 | deg | 旋转角度 | Number | 0 |
 | border | 边框 | Array | 0 |
 
@@ -168,7 +168,7 @@ export default () => {
 | top | y轴坐标 | Number | 0 |
 | width | 宽度 | Number | 0 |
 | height | 高度 | Number | 0 |
-| radius | 圆弧半径 | Number, Array | 0 or [0, 0, 0, 0] |
+| radius | 圆弧半径 | Number, Array | 0 / [0, 0, 0, 0] |
 | deg | 旋转角度 | Number | 0 |
 | border | 边框 | Array | 0 |
 | img | 图片资源(本地资源或者网络资源) | Object, String | '' |
@@ -182,11 +182,15 @@ export default () => {
 | top | y轴坐标 | Number | 0 |
 | width | 宽度 | Number | 0 |
 | content | 文本内容 | String | '' |
+| fontStyle | 字体样式 | String | normal |
+| fontVariant | 字体异体 | String | normal |
+| fontWeight | 字体粗细 | String / Number | 500 |
 | fontSize | 字体大小 | Number | 16 |
+| fontFamily | 字体 | String | sans-serif |
 | color | 文本颜色 | String | black |
 | textAlign | 文本对齐方式 | String | left。字体居中需要设置 left 值。比如：图片宽度 100,left:50,textAlign:'center' 即可居中 |
 | breakWord | 是否换行 | Boolean | false |
-| maxLineNumber | 最大行数 | Number | 默认：2。根据width(宽度)换行 ,需要设置 breakWord: true ,超出行隐藏显示为... |
+| maxLines | 最大行数 | Number | 默认：2。根据width(宽度)换行 ,需要设置 breakWord: true ,超出行隐藏显示为... |
 | bolder | 是否加粗 | Boolean | false |
 | textDecoration | 下划线装饰 | String | 下划线装饰 underline(下划线)、line-through(贯穿线) |
 
@@ -210,7 +214,7 @@ export default () => {
 | top | y轴坐标 | Number | 0 |
 | width | 宽度 | Number | 0 |
 | height | 高度 | Number | 0 |
-| radius | 圆弧半径 | Number, Array | 0 or [0, 0, 0, 0] |
+| radius | 圆弧半径 | Number, Array | 0 / [0, 0, 0, 0] |
 | deg | 旋转角度 | Number | 0 |
 | gradType | 渐变类型 | String | 默认：linear（线性渐变）、radial（径向渐变） |
 | startCoordinate | 开始坐标 | Array | linear： (x0, y0)；radial： (x0, y0, r0) |
@@ -230,6 +234,9 @@ export default () => {
 
 
 ## FAQ
+
+**1、组件内部做了什么优化处理？**
+> 组件内部会根据设备的`设备像素比(pixelRatio)`逻辑缩放。所以在使用的时候，用户不需要自己放大对应尺寸。
 
 ## 贡献代码
 
