@@ -1,0 +1,7 @@
+__tests__/*.*
+babel.config.js
+/scripts/
+node_modules/*
+*.test.js
+.*.js
+*.old.js

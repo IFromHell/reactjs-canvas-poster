@@ -5,7 +5,7 @@
  * @Description: 
  */
 import { useState } from 'react';
-import CanvasPoster from 'remax-canvas-poster';
+import CanvasPoster from 'remaxjs-canvas-poster';
 
 export default (props) => {
     const [imgurl, setImgUrl] = useState('');

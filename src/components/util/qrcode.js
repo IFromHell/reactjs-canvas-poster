@@ -1,4 +1,4 @@
-/* eslint-disable */
+// @ts-nocheck
 !(function () {
 
     // alignment pattern
@@ -257,6 +257,7 @@
                     for (r3x = 0, x = 0; x < width; x++, r3x++) {
                         if (r3x == 3)
                             r3x = 0;
+                        // @ts-ignore
                         if (!((x & y & 1) + !(!r3x | !r3y)) && !ismasked(x, y))
                             qrframe[x + y * width] ^= 1;
                     }

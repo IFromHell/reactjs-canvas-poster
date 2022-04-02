@@ -1,3 +1,4 @@
+// @ts-nocheck
 /*
  * @Author: foxfly
  * @Contact: 617903352@qq.com
@@ -5,7 +6,7 @@
  * @Description: canvas生成分享海报
  */
 import { useEffect, useRef, useState } from 'react';
-import { View, Canvas, createSelectorQuery, canvasToTempFilePath, getSystemInfoSync } from 'remax/wechat';
+import { Canvas, createSelectorQuery, canvasToTempFilePath, getSystemInfoSync } from 'remax/wechat';
 
 import QR from './util/qrcode';
 
@@ -63,7 +64,7 @@ export default ({
         const attrs = [
             'width', 'height', 'radius',
             'top', 'left', 'right', 'bottom',
-            'fontSize', 'lineHeight',
+            'fontSize', 'lineHeight', 'startCoordinate', 'endCoordinate'
         ];
 
         const list = [];
@@ -158,12 +159,12 @@ export default ({
         return () => clearInterval(inter.current);
     }, []);
 
-    return <View style={{ transform: `translateX(100vw)` }}>
+    return <div style={{ transform: `translateX(100vw)` }}>
         <Canvas type='2d' id="shareimg" style={{
             width: painting.width * pixelRatio,
             height: painting.height * pixelRatio,
         }}>你的浏览器还不支持哦</Canvas>
-    </View>;
+    </div>;
 };
 
 const classType = {};
@@ -190,6 +191,7 @@ const loadImage = (canvas, url) => {
 /**
  * @description: 绘制矩形
  * params
+ *   @param {Object} ctx  canvas context 2D 对象
  *   @param {Number} left  x轴坐标
  *   @param {Number} top  y轴坐标
  *   @param {Number} width  宽度
@@ -226,6 +228,7 @@ const drawRect = (ctx, params) => {
 /**
  * @description: 绘制图片
  * params
+ *   @param {Object} ctx  canvas context 2D 对象
  *   @param {Number} left  x轴坐标
  *   @param {Number} top  y轴坐标
  *   @param {Number} width  宽度
@@ -235,16 +238,17 @@ const drawRect = (ctx, params) => {
  *   @param {Object} img  图片资源(本地资源或者网络资源)
  *   @param {Number} deg  旋转角度
  *   @param {Array} border  边框
+ *   @param {Boolean} isSlicing  是否切片 deg情况下无效
  */
 const drawImage = (ctx, params) => {
     ctx.save();
 
     const {
-        img,
-        top = 0, left = 0,
+        img, top = 0, left = 0,
         width = 0, height = 0,
         radius = 0, deg = 0,
         background = 'transparent', border,
+        isSlicing = false
     } = params;
 
     if (radius) {
@@ -256,7 +260,8 @@ const drawImage = (ctx, params) => {
         _doRoate(ctx, left, top, width, height, deg);
         ctx.drawImage(img, -width / 2, -height / 2, width, height);
     } else {
-        ctx.drawImage(img, left, top, width, height);
+        if (isSlicing) ctx.drawImage(img, 0, 0, width, height, left, top, width, height);
+        else ctx.drawImage(img, left, top, width, height);
     }
     ctx.restore();
 };
@@ -264,6 +269,7 @@ const drawImage = (ctx, params) => {
 /**
  * @description: 绘制文本
  * params
+ *   @param {Object} ctx  canvas context 2D 对象
  *   @param {Number} left  x轴坐标  默认：0
  *   @param {Number} top  y轴坐标  默认：0
  *   @param {Number} width  文本宽度  默认：0
@@ -363,6 +369,7 @@ const drawText = (ctx, params) => {
 /**
  * @description: 绘制二维码
  * params
+ *   @param {Object} ctx  canvas context 2D 对象
  *   @param {Number} left  x轴坐标  默认：0
  *   @param {Number} top  y轴坐标  默认：0
  *   @param {Number} width  宽度  默认：0
@@ -381,6 +388,7 @@ const drawQRCode = (ctx, params) => {
 /**
  * @description: 绘制渐变矩形
  * params
+ *   @param {Object} ctx  canvas context 2D 对象
  *   @param {Number} left  x轴坐标  默认：0
  *   @param {Number} top  y轴坐标  默认：0
  *   @param {Number} width  宽度  默认：0
@@ -429,6 +437,7 @@ const drawGradient = (ctx, params) => {
 
 /**
  * @description: 画直线
+ * @param {Object} ctx  canvas context 2D 对象
  * @param {Number} left  x轴坐标
  * @param {Number} top  y轴坐标
  * @param {String} textDecoration  线条样式  underline(下划线)、line-through(贯穿线)
@@ -460,6 +469,7 @@ const drawTextLine = (ctx, ...params) => {
 
 /**
  * @description: 裁剪
+ * @param {Object} ctx  canvas context 2D 对象
  * @param {Number} left  x轴坐标
  * @param {Number} top  y轴坐标
  * @param {Number} width  宽度
@@ -530,6 +540,7 @@ const _doClip = (ctx, ...params) => {
 
 /**
  * @description: 旋转
+ * @param {Object} ctx  canvas context 2D 对象
  * @param {Number} left  x轴坐标
  * @param {Number} top  y轴坐标
  * @param {Number} width  宽度
